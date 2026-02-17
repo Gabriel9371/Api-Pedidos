@@ -3,7 +3,10 @@ package br.com.PedidosAPI.ordering_system.mapper;
 import br.com.PedidosAPI.ordering_system.dto.produtoDTO.ProdutoCreateRequest;
 import br.com.PedidosAPI.ordering_system.dto.produtoDTO.ProdutoResponse;
 import br.com.PedidosAPI.ordering_system.model.Produto;
+import org.springframework.stereotype.Component;
 
+
+@Component
 public class ProdutoMapper {
     public Produto toEntity(ProdutoCreateRequest dto){
         Produto produto = new Produto();
