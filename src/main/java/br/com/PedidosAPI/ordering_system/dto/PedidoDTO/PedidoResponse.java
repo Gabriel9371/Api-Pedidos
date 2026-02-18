@@ -24,7 +24,7 @@ public class PedidoResponse {
     }
 
     public void setData(LocalDate data) {
-        this.data = data;
+        this.data = LocalDate.now();
     }
 
     public Status getStatus() {
