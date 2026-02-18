@@ -3,6 +3,7 @@ package br.com.PedidosAPI.ordering_system.controller;
 
 import br.com.PedidosAPI.ordering_system.dto.produtoDTO.ProdutoCreateRequest;
 import br.com.PedidosAPI.ordering_system.dto.produtoDTO.ProdutoResponse;
+import br.com.PedidosAPI.ordering_system.dto.produtoDTO.ProdutoUpdateEstoque;
 import br.com.PedidosAPI.ordering_system.service.ProdutoService;
 import jakarta.validation.Valid;
 import org.springframework.data.domain.Page;
@@ -47,6 +48,13 @@ public class ProdutoController {
         service.delete(id);
 
         return ResponseEntity.noContent().build();
+    }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<ProdutoResponse> updateEstoque(@PathVariable Long id, @RequestBody @Valid ProdutoUpdateEstoque dados){
+        ProdutoResponse produto = service.updateEstoque(id, dados);
+
+        return ResponseEntity.ok(produto);
     }
 
 }

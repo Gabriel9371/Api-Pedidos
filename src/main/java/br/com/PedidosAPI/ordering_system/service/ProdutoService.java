@@ -2,10 +2,12 @@ package br.com.PedidosAPI.ordering_system.service;
 
 import br.com.PedidosAPI.ordering_system.dto.produtoDTO.ProdutoCreateRequest;
 import br.com.PedidosAPI.ordering_system.dto.produtoDTO.ProdutoResponse;
+import br.com.PedidosAPI.ordering_system.dto.produtoDTO.ProdutoUpdateEstoque;
 import br.com.PedidosAPI.ordering_system.exception.NotFoundProdutoException;
 import br.com.PedidosAPI.ordering_system.mapper.ProdutoMapper;
 import br.com.PedidosAPI.ordering_system.model.Produto;
 import br.com.PedidosAPI.ordering_system.repository.ProdutoRepository;
+import jakarta.transaction.Transactional;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
@@ -50,5 +52,19 @@ public class ProdutoService {
         );
 
         repository.delete(produto);
+    }
+
+    @Transactional
+    public ProdutoResponse updateEstoque(Long id, ProdutoUpdateEstoque dtoUpd){
+
+        Produto produto = repository.findById(id).orElseThrow(
+                () -> new NotFoundProdutoException(id)
+        );
+
+        produto.setEstoque(produto.getEstoque() + dtoUpd.getEstoque());
+
+        Produto produtoAtualizado = repository.save(produto);
+
+        return mapper.toResponse(produtoAtualizado);
     }
 }
