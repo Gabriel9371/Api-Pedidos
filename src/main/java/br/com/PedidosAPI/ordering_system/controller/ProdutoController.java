@@ -3,6 +3,7 @@ package br.com.PedidosAPI.ordering_system.controller;
 
 import br.com.PedidosAPI.ordering_system.dto.produtoDTO.ProdutoCreateRequest;
 import br.com.PedidosAPI.ordering_system.dto.produtoDTO.ProdutoResponse;
+import br.com.PedidosAPI.ordering_system.dto.produtoDTO.ProdutoUpdateDTO;
 import br.com.PedidosAPI.ordering_system.dto.produtoDTO.ProdutoUpdateEstoque;
 import br.com.PedidosAPI.ordering_system.service.ProdutoService;
 import jakarta.validation.Valid;
@@ -53,6 +54,13 @@ public class ProdutoController {
     @PutMapping("/{id}")
     public ResponseEntity<ProdutoResponse> updateEstoque(@PathVariable Long id, @RequestBody @Valid ProdutoUpdateEstoque dados){
         ProdutoResponse produto = service.updateEstoque(id, dados);
+
+        return ResponseEntity.ok(produto);
+    }
+
+    @PatchMapping("/{id}")
+    public ResponseEntity<ProdutoResponse> patchProduto(@PathVariable Long id, @RequestBody @Valid ProdutoUpdateDTO dados){
+        ProdutoResponse produto = service.updatePartialProduto(id, dados);
 
         return ResponseEntity.ok(produto);
     }

@@ -2,6 +2,7 @@ package br.com.PedidosAPI.ordering_system.service;
 
 import br.com.PedidosAPI.ordering_system.dto.produtoDTO.ProdutoCreateRequest;
 import br.com.PedidosAPI.ordering_system.dto.produtoDTO.ProdutoResponse;
+import br.com.PedidosAPI.ordering_system.dto.produtoDTO.ProdutoUpdateDTO;
 import br.com.PedidosAPI.ordering_system.dto.produtoDTO.ProdutoUpdateEstoque;
 import br.com.PedidosAPI.ordering_system.exception.NotFoundProdutoException;
 import br.com.PedidosAPI.ordering_system.mapper.ProdutoMapper;
@@ -66,5 +67,31 @@ public class ProdutoService {
         Produto produtoAtualizado = repository.save(produto);
 
         return mapper.toResponse(produtoAtualizado);
+    }
+
+    @Transactional
+    public ProdutoResponse updatePartialProduto(Long id, ProdutoUpdateDTO dtoUp){
+
+        Produto produto = repository.findById(id).orElseThrow(
+                () -> new NotFoundProdutoException(id)
+        );
+
+        if(dtoUp.getNome() != null){
+            produto.setNome(dtoUp.getNome());
+        }
+        if(dtoUp.getPreco() != null){
+            produto.setPreco(dtoUp.getPreco());
+        }
+        if (dtoUp.getEstoque() != null){
+            produto.setEstoque(dtoUp.getEstoque());
+
+        }
+        if(dtoUp.getCategoria() != null){
+            produto.setCategoria(dtoUp.getCategoria());
+        }
+
+        Produto theUpdateProduto = repository.save(produto);
+
+        return mapper.toResponse(theUpdateProduto);
     }
 }
