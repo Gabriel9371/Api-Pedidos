@@ -10,13 +10,17 @@ import java.util.List;
 
 @Component
 public class PedidoMapper {
+
+    private final ItemMapper mapper;
+
+    public PedidoMapper(ItemMapper mapper) {
+        this.mapper = mapper;
+    }
+
     public Pedido toEntity(PedidoCreateRequest dto){
         Pedido pedido = new Pedido();
 
-
-        pedido.setTotal(dto.getTotal());
         pedido.setStatus(dto.getStatus());
-
 
         return pedido;
     }
@@ -25,10 +29,13 @@ public class PedidoMapper {
         PedidoResponse response = new PedidoResponse();
 
         response.setId(dados.getId());
+        response.setData(dados.getData());
         response.setStatus(dados.getStatus());
         response.setClienteId(dados.getCliente().getId());
         response.setTotal(dados.getTotal());
 
+
+        response.setItems(mapper.toResponseList(dados.getItens())); //não sei se isso realmente vai funcionar @~@
         return response;
     }
 

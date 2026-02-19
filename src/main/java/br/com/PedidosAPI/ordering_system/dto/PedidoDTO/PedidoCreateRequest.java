@@ -1,7 +1,11 @@
 package br.com.PedidosAPI.ordering_system.dto.PedidoDTO;
 
+import br.com.PedidosAPI.ordering_system.dto.itemDTO.ItemCreateRequest;
+import br.com.PedidosAPI.ordering_system.dto.itemDTO.ItemResponse;
 import br.com.PedidosAPI.ordering_system.enums.Status;
 import jakarta.validation.constraints.NotNull;
+
+import java.util.List;
 
 public class PedidoCreateRequest {
 
@@ -9,8 +13,11 @@ public class PedidoCreateRequest {
     private Status status;
     @NotNull
     private Long clienteId;
-    @NotNull
-    private Double total;
+
+
+    private List<ItemCreateRequest> items;
+
+
 
     public Status getStatus() {
         return status;
@@ -28,11 +35,11 @@ public class PedidoCreateRequest {
         this.clienteId = clienteId;
     }
 
-    public Double getTotal() {
-        return total;
+    public List<ItemCreateRequest> getItems() {
+        return items;
     }
 
-    public void setTotal(Double total) {
-        this.total = total;
+    public void setItems(List<ItemCreateRequest> items) {
+        this.items = items;
     }
 }

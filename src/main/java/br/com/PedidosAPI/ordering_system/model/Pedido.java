@@ -4,6 +4,8 @@ import br.com.PedidosAPI.ordering_system.enums.Status;
 import jakarta.persistence.*;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 public class Pedido {
@@ -20,6 +22,16 @@ public class Pedido {
     @JoinColumn(name = "cliente_id")
     private Cliente cliente;
 
+    @OneToMany(mappedBy = "pedido")
+    private List<Item> itens = new ArrayList<>();
+
+    public List<Item> getItens() {
+        return itens;
+    }
+
+    public void setItens(List<Item> itens) {
+        this.itens = itens;
+    }
 
     private Double total;
 

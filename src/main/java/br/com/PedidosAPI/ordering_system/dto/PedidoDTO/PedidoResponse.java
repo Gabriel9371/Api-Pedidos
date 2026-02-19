@@ -1,8 +1,10 @@
 package br.com.PedidosAPI.ordering_system.dto.PedidoDTO;
 
+import br.com.PedidosAPI.ordering_system.dto.itemDTO.ItemResponse;
 import br.com.PedidosAPI.ordering_system.enums.Status;
 
 import java.time.LocalDate;
+import java.util.List;
 
 public class PedidoResponse {
     private Long id;
@@ -10,6 +12,7 @@ public class PedidoResponse {
     private Status status;
     private Long clienteId;
     private Double total;
+    private List<ItemResponse> items;
 
     public Long getId() {
         return id;
@@ -41,6 +44,14 @@ public class PedidoResponse {
 
     public void setClienteId(Long clienteId) {
         this.clienteId = clienteId;
+    }
+
+    public List<ItemResponse> getItems() {
+        return items;
+    }
+
+    public void setItems(List<ItemResponse> items) {
+        this.items = items;
     }
 
     public Double getTotal() {
