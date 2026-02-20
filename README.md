@@ -36,7 +36,7 @@ Uma regra de negócio crítica implementada foi o **Preço Histórico**. No mome
 | :--- | :--- | :--- |
 | `POST` | `/pedidos` | Cria um novo pedido com múltiplos itens. |
 | `GET` | `/pedidos` | Lista todos os pedidos realizados. |
-| `POST` | `/clientes` | Cadastra um novo cliente. |
+| `POST` | `/cliente` | Cadastra um novo cliente. |
 | `POST` | `/produtos` | Cadastra um novo produto. |
 
 ### Exemplo de JSON para criação de Cliente:
