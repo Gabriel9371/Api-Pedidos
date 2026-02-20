@@ -9,8 +9,10 @@ import java.util.List;
 
 public class PedidoCreateRequest {
 
-    @NotNull
+
     private Status status;
+
+
     @NotNull
     private Long clienteId;
 

@@ -3,6 +3,7 @@ package br.com.PedidosAPI.ordering_system.service;
 import br.com.PedidosAPI.ordering_system.dto.PedidoDTO.PedidoCreateRequest;
 import br.com.PedidosAPI.ordering_system.dto.PedidoDTO.PedidoResponse;
 import br.com.PedidosAPI.ordering_system.dto.itemDTO.ItemCreateRequest;
+import br.com.PedidosAPI.ordering_system.enums.Status;
 import br.com.PedidosAPI.ordering_system.exception.NotFoundUserId;
 import br.com.PedidosAPI.ordering_system.mapper.PedidoMapper;
 import br.com.PedidosAPI.ordering_system.model.Cliente;
@@ -38,6 +39,11 @@ public class PedidoService {
 
         Pedido pedido = mapper.toEntity(dto);
         pedido.setCliente(cliente);
+
+        if(dto.getStatus() == null){
+            dto.setStatus(Status.PREPARANDO_PEDIDO);
+        }
+
         pedido.setStatus(dto.getStatus());
 
 
