@@ -2,6 +2,12 @@
 
 Esta é uma API REST desenvolvida com **Java** e **Spring Boot** para gerenciamento de um sistema de pedidos. O projeto foca em relacionamentos complexos de banco de dados e separação de responsabilidades.
 
+## Arquitetura (canvas)
+![Canvas Projeto](docs/diagram/ArquiteturaProjeto-Canvas.png)
+
+## Modelagem de Dados
+![Modelagem](docs/diagram/modelo_bancoDeDados.png)
+
 ## Tecnologias Utilizadas
 
 * **Java 17** 
