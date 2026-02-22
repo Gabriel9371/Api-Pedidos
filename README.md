@@ -11,7 +11,7 @@ Esta é uma API REST desenvolvida com **Java** e **Spring Boot** para gerenciame
 ## Tecnologias Utilizadas
 
 * **Java 17** 
-* **Spring Boot 3.x**
+* **Spring Boot 4.0.2**
 * **Spring Data JPA**: Para persistência de dados.
 * **MySQL**: Banco de dados relacional.
 * **Jakarta Validation**: Para validação de dados.
